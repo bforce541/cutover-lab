@@ -1,0 +1,83 @@
+{
+  "title": "Cutover Lab \u00b7 Independent TLC input audit",
+  "observed_at": "2026-11-11T23:05:31+00:00",
+  "batch": {
+    "name": "current",
+    "mode": "full",
+    "as_of": "2025-02-01",
+    "inputs": [
+      {
+        "file": "yellow_tripdata_2024-12.parquet",
+        "sha256": "41ebf7db80bebde60c58e5143c14cdf38ad04a0f3e3ff44215b3e240d55f6c78",
+        "start": "2024-12-01",
+        "end": "2025-01-01",
+        "fee_available": false
+      },
+      {
+        "file": "yellow_tripdata_2025-01.parquet",
+        "sha256": "9af277e4c0d3f9deb30644da822981e1e7df6af58313170fd3aa8a474485488a",
+        "start": "2025-01-01",
+        "end": "2025-02-01",
+        "fee_available": true
+      }
+    ],
+    "zone_lookup_sha256": "1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed"
+  },
+  "baseline_trips_and_cents": {
+    "december": [
+      3668337,
+      null
+    ],
+    "zone161": [
+      4342,
+      307725
+    ],
+    "zone162": [
+      3217,
+      226425
+    ],
+    "jan7": [
+      100643,
+      5205225
+    ],
+    "jan6": [
+      80126,
+      3883125
+    ],
+    "january": [
+      3475204,
+      167995575
+    ]
+  },
+  "fee_row_coverage": {
+    "zone161": {
+      "negative": 3,
+      "null": 0,
+      "fractional_cent": 0
+    },
+    "zone162": {
+      "negative": 0,
+      "null": 0,
+      "fractional_cent": 0
+    },
+    "jan7": {
+      "negative": 22,
+      "null": 0,
+      "fractional_cent": 0
+    },
+    "jan6": {
+      "negative": 27,
+      "null": 0,
+      "fractional_cent": 0
+    },
+    "january": {
+      "negative": 6553,
+      "null": 0,
+      "fractional_cent": 0
+    }
+  },
+  "exact_midnight_pickups": {
+    "2025-01-06": 0,
+    "2025-01-07": 2
+  }
+}

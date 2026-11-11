@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-11-11T23:06:46+00:00",
+  "source_file_sha256": "9af277e4c0d3f9deb30644da822981e1e7df6af58313170fd3aa8a474485488a",
+  "civil_midnight_trips_by_engine": {
+    "DuckDB source": {
+      "2025-01-06": 0,
+      "2025-01-07": 2
+    },
+    "Databricks SQL": {
+      "2025-01-06": 0,
+      "2025-01-07": 2
+    },
+    "BigQuery": {
+      "2025-01-06": 0,
+      "2025-01-07": 2
+    }
+  }
+}

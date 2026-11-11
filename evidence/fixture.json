@@ -1,0 +1,1877 @@
+{
+  "observed_at": "2026-11-11T23:04:20+00:00",
+  "run_mode": "Local rehearsal",
+  "data": "fixture",
+  "target": "DuckDB candidate",
+  "select_1": 1,
+  "batch": {
+    "name": "current",
+    "mode": "fixture",
+    "as_of": "2025-02-01",
+    "inputs": [
+      {
+        "file": "dec.csv",
+        "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+        "start": "2024-12-01",
+        "end": "2025-01-01",
+        "fee_available": false
+      },
+      {
+        "file": "jan.csv",
+        "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+        "start": "2025-01-01",
+        "end": "2025-02-01",
+        "fee_available": true
+      }
+    ],
+    "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+  },
+  "baseline": {
+    "december": {
+      "grain": "month",
+      "month": "2024-12-01",
+      "day": null,
+      "zone": null,
+      "zone_name": null,
+      "old": {
+        "trips": 2,
+        "fee_cents": null,
+        "present_fees": 0,
+        "null_fees": 0,
+        "negative_fees": 0,
+        "has_fee": 0
+      },
+      "candidate": {
+        "trips": 2,
+        "fee_cents": null,
+        "present_fees": 0,
+        "null_fees": 0,
+        "negative_fees": 0,
+        "has_fee": 0
+      },
+      "fee_difference": null,
+      "trip_difference": 0,
+      "issues": []
+    },
+    "january": {
+      "grain": "month",
+      "month": "2025-01-01",
+      "day": null,
+      "zone": null,
+      "zone_name": null,
+      "old": {
+        "trips": 10,
+        "fee_cents": 950,
+        "present_fees": 9,
+        "null_fees": 1,
+        "negative_fees": 1,
+        "has_fee": 1
+      },
+      "candidate": {
+        "trips": 10,
+        "fee_cents": 950,
+        "present_fees": 9,
+        "null_fees": 1,
+        "negative_fees": 1,
+        "has_fee": 1
+      },
+      "fee_difference": 0,
+      "trip_difference": 0,
+      "issues": []
+    },
+    "jan6": {
+      "grain": "day",
+      "month": "2025-01-01",
+      "day": "2025-01-06",
+      "zone": null,
+      "zone_name": null,
+      "old": {
+        "trips": 6,
+        "fee_cents": 425,
+        "present_fees": 5,
+        "null_fees": 1,
+        "negative_fees": 1,
+        "has_fee": 1
+      },
+      "candidate": {
+        "trips": 6,
+        "fee_cents": 425,
+        "present_fees": 5,
+        "null_fees": 1,
+        "negative_fees": 1,
+        "has_fee": 1
+      },
+      "fee_difference": 0,
+      "trip_difference": 0,
+      "issues": []
+    },
+    "jan7": {
+      "grain": "day",
+      "month": "2025-01-01",
+      "day": "2025-01-07",
+      "zone": null,
+      "zone_name": null,
+      "old": {
+        "trips": 2,
+        "fee_cents": 375,
+        "present_fees": 2,
+        "null_fees": 0,
+        "negative_fees": 0,
+        "has_fee": 1
+      },
+      "candidate": {
+        "trips": 2,
+        "fee_cents": 375,
+        "present_fees": 2,
+        "null_fees": 0,
+        "negative_fees": 0,
+        "has_fee": 1
+      },
+      "fee_difference": 0,
+      "trip_difference": 0,
+      "issues": []
+    },
+    "zone161": {
+      "grain": "zone",
+      "month": "2025-01-01",
+      "day": "2025-01-06",
+      "zone": 161,
+      "zone_name": "Midtown Center",
+      "old": {
+        "trips": 3,
+        "fee_cents": 300,
+        "present_fees": 3,
+        "null_fees": 0,
+        "negative_fees": 1,
+        "has_fee": 1
+      },
+      "candidate": {
+        "trips": 3,
+        "fee_cents": 125,
+        "present_fees": 3,
+        "null_fees": 0,
+        "negative_fees": 1,
+        "has_fee": 1
+      },
+      "fee_difference": -175,
+      "trip_difference": 0,
+      "issues": [
+        "Recorded fee amount"
+      ]
+    },
+    "zone162": {
+      "grain": "zone",
+      "month": "2025-01-01",
+      "day": "2025-01-06",
+      "zone": 162,
+      "zone_name": "Midtown East",
+      "old": {
+        "trips": 1,
+        "fee_cents": 125,
+        "present_fees": 1,
+        "null_fees": 0,
+        "negative_fees": 0,
+        "has_fee": 1
+      },
+      "candidate": {
+        "trips": 1,
+        "fee_cents": 300,
+        "present_fees": 1,
+        "null_fees": 0,
+        "negative_fees": 0,
+        "has_fee": 1
+      },
+      "fee_difference": 175,
+      "trip_difference": 0,
+      "issues": [
+        "Recorded fee amount"
+      ]
+    }
+  },
+  "results": {
+    "zone_swap": {
+      "phase": "blocked",
+      "reason": "The daily totals agree, but both Midtown zones have the wrong recorded fees.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "91f140cfc52a7e8e6d980a8fd064b220f144e17089be397d6f440160fe57ccce",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 0
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 2
+        }
+      },
+      "blockers": [],
+      "mismatches": [
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 161,
+          "zone_name": "Midtown Center",
+          "old": {
+            "trips": 3,
+            "fee_cents": 300,
+            "present_fees": 3,
+            "null_fees": 0,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 3,
+            "fee_cents": 125,
+            "present_fees": 3,
+            "null_fees": 0,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "fee_difference": -175,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 162,
+          "zone_name": "Midtown East",
+          "old": {
+            "trips": 1,
+            "fee_cents": 125,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 1,
+            "fee_cents": 300,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "fee_difference": 175,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        }
+      ],
+      "recovery": null,
+      "last_event": {
+        "label": "Switch blocked",
+        "time": "2026-11-11T23:04:19.793+00:00",
+        "backend": "DuckDB candidate",
+        "batch": "current",
+        "revision": "91f140cfc52a7e8e6d980a8fd064b220f144e17089be397d6f440160fe57ccce",
+        "note": "The daily totals agree, but both Midtown zones have the wrong recorded fees."
+      }
+    },
+    "wrong_day": {
+      "phase": "blocked",
+      "reason": "January\u2019s total agrees, but recorded fees moved from January 6 to January 7.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "5760689146cc34abba90fe52d9856ef62c854452852035f16cdc7d16f5ff710e",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 0,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 800,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 2
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 3
+        }
+      },
+      "blockers": [],
+      "mismatches": [
+        {
+          "grain": "day",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 6,
+            "fee_cents": 0,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "fee_difference": -425,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        },
+        {
+          "grain": "day",
+          "month": "2025-01-01",
+          "day": "2025-01-07",
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 2,
+            "fee_cents": 800,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "fee_difference": 425,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 161,
+          "zone_name": "Midtown Center",
+          "old": {
+            "trips": 3,
+            "fee_cents": 300,
+            "present_fees": 3,
+            "null_fees": 0,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 3,
+            "fee_cents": 0,
+            "present_fees": 3,
+            "null_fees": 0,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "fee_difference": -300,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 162,
+          "zone_name": "Midtown East",
+          "old": {
+            "trips": 1,
+            "fee_cents": 125,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 1,
+            "fee_cents": 0,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "fee_difference": -125,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-07",
+          "zone": 161,
+          "zone_name": "Midtown Center",
+          "old": {
+            "trips": 1,
+            "fee_cents": 225,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": {
+            "trips": 1,
+            "fee_cents": 650,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "fee_difference": 425,
+          "trip_difference": 0,
+          "issues": [
+            "Recorded fee amount"
+          ]
+        }
+      ],
+      "recovery": null,
+      "last_event": {
+        "label": "Switch blocked",
+        "time": "2026-11-11T23:04:19.824+00:00",
+        "backend": "DuckDB candidate",
+        "batch": "current",
+        "revision": "5760689146cc34abba90fe52d9856ef62c854452852035f16cdc7d16f5ff710e",
+        "note": "January\u2019s total agrees, but recorded fees moved from January 6 to January 7."
+      }
+    },
+    "stale_candidate": {
+      "phase": "blocked",
+      "reason": "DuckDB candidate returned batch december, expected current.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "december",
+          "mode": "fixture",
+          "as_of": "2025-01-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": null,
+          "2025-01-07": null
+        }
+      },
+      "served": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 1
+        },
+        "day": {
+          "groups": 6,
+          "failed": 4
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 8
+        }
+      },
+      "blockers": [
+        "DuckDB candidate returned batch december, expected current.",
+        "DuckDB candidate returned incomplete month coverage."
+      ],
+      "mismatches": [
+        {
+          "grain": "month",
+          "month": "2025-01-01",
+          "day": null,
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 10,
+            "fee_cents": 950,
+            "present_fees": 9,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "day",
+          "month": "2025-01-01",
+          "day": "2025-01-01",
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 1,
+            "fee_cents": 75,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "day",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "day",
+          "month": "2025-01-01",
+          "day": "2025-01-07",
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "day",
+          "month": "2025-01-01",
+          "day": "2025-01-31",
+          "zone": null,
+          "zone_name": null,
+          "old": {
+            "trips": 1,
+            "fee_cents": 75,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-01",
+          "zone": 161,
+          "zone_name": "Midtown Center",
+          "old": {
+            "trips": 1,
+            "fee_cents": 75,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": null,
+          "zone_name": "Missing pickup zone",
+          "old": {
+            "trips": 1,
+            "fee_cents": 0,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 161,
+          "zone_name": "Midtown Center",
+          "old": {
+            "trips": 3,
+            "fee_cents": 300,
+            "present_fees": 3,
+            "null_fees": 0,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 162,
+          "zone_name": "Midtown East",
+          "old": {
+            "trips": 1,
+            "fee_cents": 125,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-06",
+          "zone": 900,
+          "zone_name": "Unknown zone 900",
+          "old": {
+            "trips": 1,
+            "fee_cents": null,
+            "present_fees": 0,
+            "null_fees": 1,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-07",
+          "zone": 161,
+          "zone_name": "Midtown Center",
+          "old": {
+            "trips": 1,
+            "fee_cents": 225,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        },
+        {
+          "grain": "zone",
+          "month": "2025-01-01",
+          "day": "2025-01-07",
+          "zone": 162,
+          "zone_name": "Midtown East",
+          "old": {
+            "trips": 1,
+            "fee_cents": 150,
+            "present_fees": 1,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          },
+          "candidate": null,
+          "fee_difference": null,
+          "trip_difference": null,
+          "issues": [
+            "Missing candidate key"
+          ]
+        }
+      ],
+      "recovery": null,
+      "last_event": {
+        "label": "Switch blocked",
+        "time": "2026-11-11T23:04:19.852+00:00",
+        "backend": "DuckDB candidate",
+        "batch": "december",
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "note": "DuckDB candidate returned batch december, expected current."
+      }
+    },
+    "stale_approval": {
+      "old_approval_rejected": true,
+      "changed_batch": "december"
+    },
+    "corrected": {
+      "phase": "approved",
+      "reason": "All checks passed. The old system will serve until you approve the switch.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 0
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 0
+        }
+      },
+      "blockers": [],
+      "mismatches": [],
+      "recovery": null,
+      "last_event": {
+        "label": "Checks passed",
+        "time": "2026-11-11T23:04:19.918+00:00",
+        "backend": "DuckDB candidate",
+        "batch": "current",
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "note": ""
+      }
+    },
+    "active_read": {
+      "phase": "switched",
+      "reason": "DuckDB candidate returned the approved report.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 0
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 0
+        }
+      },
+      "blockers": [],
+      "mismatches": [],
+      "recovery": null,
+      "last_event": {
+        "label": "Active report refreshed",
+        "time": "2026-11-11T23:04:19.947+00:00",
+        "backend": "DuckDB candidate",
+        "batch": "current",
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "note": ""
+      }
+    },
+    "recovery": {
+      "phase": "fallback",
+      "reason": "The old system returned the current verified report.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 0
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 0
+        }
+      },
+      "blockers": [],
+      "mismatches": [],
+      "recovery": {
+        "kind": "Simulated",
+        "reason": "Simulated candidate query failure.",
+        "milliseconds": 8.24,
+        "batch": "current"
+      },
+      "last_event": {
+        "label": "Fallback report served",
+        "time": "2026-11-11T23:04:19.956+00:00",
+        "backend": "DuckDB source",
+        "batch": "current",
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "note": "8.24 ms from detected failure"
+      }
+    },
+    "fallback_stale": {
+      "phase": "unavailable",
+      "reason": "The fallback source did not return the current verified batch.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": null,
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 0
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 0
+        }
+      },
+      "blockers": [],
+      "mismatches": [],
+      "recovery": {
+        "kind": "Simulated",
+        "reason": "Simulated candidate query failure.",
+        "milliseconds": null,
+        "batch": null
+      },
+      "last_event": {
+        "label": "Report unavailable",
+        "time": "2026-11-11T23:04:20.021+00:00",
+        "backend": null,
+        "batch": null,
+        "revision": null,
+        "note": "The fallback source did not return the current verified batch."
+      }
+    },
+    "fallback_unavailable": {
+      "phase": "unavailable",
+      "reason": "Simulated source query failure.",
+      "expected_batch": "current",
+      "source": {
+        "backend": "DuckDB source",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "candidate": {
+        "backend": "DuckDB candidate",
+        "live": false,
+        "batch": {
+          "name": "current",
+          "mode": "fixture",
+          "as_of": "2025-02-01",
+          "inputs": [
+            {
+              "file": "dec.csv",
+              "sha256": "19b43f9e6ca48565ce8fb7c190542974e10bb031d35de982160cd2e0fef659a8",
+              "start": "2024-12-01",
+              "end": "2025-01-01",
+              "fee_available": false
+            },
+            {
+              "file": "jan.csv",
+              "sha256": "cca688066ed1f97cfa7c02fa82b4bf0c9168b4b6b10d631c0185e6e9e6e4d696",
+              "start": "2025-01-01",
+              "end": "2025-02-01",
+              "fee_available": true
+            }
+          ],
+          "zone_lookup_sha256": "08b125fa89fdcbf590c2bc25fba91ec25d9dfe9e28d7aaa2754c958c6365dd5b"
+        },
+        "revision": "22830905c602bae73440aee5423f9b56d86d7069da0a81988464b70461fe8fb8",
+        "focus": {
+          "2025-01-06": {
+            "trips": 6,
+            "fee_cents": 425,
+            "present_fees": 5,
+            "null_fees": 1,
+            "negative_fees": 1,
+            "has_fee": 1
+          },
+          "2025-01-07": {
+            "trips": 2,
+            "fee_cents": 375,
+            "present_fees": 2,
+            "null_fees": 0,
+            "negative_fees": 0,
+            "has_fee": 1
+          }
+        }
+      },
+      "served": null,
+      "checks": {
+        "month": {
+          "groups": 2,
+          "failed": 0
+        },
+        "day": {
+          "groups": 6,
+          "failed": 0
+        },
+        "zone": {
+          "groups": 10,
+          "failed": 0
+        }
+      },
+      "blockers": [],
+      "mismatches": [],
+      "recovery": {
+        "kind": "Simulated",
+        "reason": "Simulated candidate query failure.",
+        "milliseconds": null,
+        "batch": null
+      },
+      "last_event": {
+        "label": "Report unavailable",
+        "time": "2026-11-11T23:04:20.081+00:00",
+        "backend": null,
+        "batch": null,
+        "revision": null,
+        "note": "Simulated source query failure."
+      }
+    }
+  }
+}

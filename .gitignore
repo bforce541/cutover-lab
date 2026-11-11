@@ -1,0 +1,17 @@
+.venv/
+.tools/
+.env
+.env.*
+!.env.example
+data/raw/
+data/*.duckdb*
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+media/
+.DS_Store
+frontend/test-results/
+frontend/playwright-report/
