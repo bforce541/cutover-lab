@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import '@fontsource-variable/instrument-sans';
+import '@fontsource-variable/geist';
+import '@fontsource-variable/hedvig-letters-serif';
 import '@fontsource/ibm-plex-mono/latin-400.css';
 import '@fontsource/ibm-plex-mono/latin-500.css';
 import './style.css';
@@ -74,34 +75,38 @@ function App() {
   const mode = cloudRead ? 'Live warehouse' : state.target === 'local' ? 'Local rehearsal' : 'Live check pending';
 
   return <>
-    <header className="masthead">
-      <div className="frame mast-inner">
-        <div className="brand">
-          <span className="mark" aria-hidden="true">{state.brand.mark}</span>
-          <div><strong>{state.brand.name}</strong><span>{state.brand.subtitle}</span></div>
+    <div className="review-header">
+      <header className="masthead">
+        <div className="frame mast-inner">
+          <div className="brand">
+            <strong>{state.brand.name}</strong>
+            <span>{state.brand.subtitle}</span>
+          </div>
+          <div className="mode" data-pending={!cloudRead && state.target !== 'local'}>
+            <i aria-hidden="true" />{mode}
+            <span className="mode-data">{state.mode === 'full' ? 'TLC public files' : 'Sample fixture'}</span>
+          </div>
         </div>
-        <div className="mode"><i aria-hidden="true" />{mode}<span className="mode-data">{state.mode === 'full' ? 'TLC public files' : 'Sample fixture'}</span></div>
-      </div>
-    </header>
-    <main className="frame main">
-      <section className="intro" aria-labelledby="review-title">
-        <div className="hero-art" aria-hidden="true" />
-        <div className="intro-copy">
-          <p className="eyebrow">NYC Yellow Taxi <span aria-hidden="true">/</span> Finance report</p>
+      </header>
+      <div className="frame intro">
+        <div>
+          <p className="dataset">NYC TLC <span aria-hidden="true">/</span> Yellow taxi records</p>
           <h1 id="review-title">Migration review</h1>
-          <p className="intro-description">Compare the daily report and decide whether to switch to the new warehouse.</p>
         </div>
-      </section>
-      <dl className="context">
-        <div><dt>Selected target</dt><dd>{state.targets[state.target]}</dd></div>
-        <div><dt>Serving backend</dt><dd>{state.report?.backend ?? 'Unavailable'}</dd></div>
-        <div><dt>Batch through</dt><dd>{lastDay(state.batch.as_of)}</dd></div>
-      </dl>
-
-      <div className="top-grid">
-        <section className="surface snapshot" aria-labelledby="snapshot-title">
+        <dl className="context">
+          <div><dt>Serving backend</dt><dd>{state.report?.backend ?? 'Unavailable'}</dd></div>
+          <div><dt>Selected target</dt><dd>{state.targets[state.target]}</dd></div>
+          <div><dt>Batch through</dt><dd>{lastDay(state.batch.as_of)}</dd></div>
+        </dl>
+      </div>
+    </div>
+    <main className="frame main" aria-labelledby="review-title">
+      <Controls state={state} busy={busy} action={action} />
+      {error && <p className="error" role="alert">{error}</p>}
+      <div className="review-grid">
+        <section className="snapshot" aria-labelledby="snapshot-title">
           <div className="surface-head">
-            <div><h2 id="snapshot-title">Daily report</h2><p>{dayLabel(day)} pickups</p></div>
+            <div><h2 id="snapshot-title">Daily report</h2><p>{dayLabel(day)}</p></div>
             {matching && <span className="tag match"><b aria-hidden="true">✓</b> Totals match</span>}
           </div>
           <div className="totals">
@@ -110,8 +115,8 @@ function App() {
           </div>
         </section>
 
-        <section className={'surface decision ' + state.phase} aria-labelledby="decision-title" aria-live="polite">
-          <div className="eyebrow decision-label"><i aria-hidden="true" />Cutover decision</div>
+        <section className={'decision ' + state.phase} aria-labelledby="decision-title" aria-live="polite">
+          <div className="decision-label"><i aria-hidden="true" />Cutover decision</div>
           <div className="decision-result" key={state.phase}>
             <h2 id="decision-title">{phaseLabels[state.phase]}</h2>
             <p>{state.detail}</p>
@@ -126,14 +131,8 @@ function App() {
             </div>}
           </div>
         </section>
-      </div>
-
-      <Controls state={state} busy={busy} action={action} />
-      {error && <p className="error" role="alert">{error}</p>}
-
-      <div className="detail-grid">
         <Evidence state={state} grain={grain} setGrain={setGrain} day={day} setDay={setDay} />
-        <section className="surface activity" aria-labelledby="activity-title">
+        <section className="activity" aria-labelledby="activity-title">
           <div className="surface-head"><h2 id="activity-title">Activity</h2></div>
           <ol className="events">
             {state.events.slice(-5).reverse().map((event, i) => <li key={event.time + event.label + i}>
@@ -147,7 +146,7 @@ function App() {
             </li>)}
           </ol>
           {state.report && <div className="served">
-            <span className="eyebrow">Active report · {dayLabel(day)}</span>
+            <span className="report-label">Active report · {dayLabel(day)}</span>
             <strong>{state.report.backend}</strong>
             <span className="mono">{count(state.report.focus[day]?.trips)} trips · {money(state.report.focus[day]?.fee_cents)}</span>
           </div>}
@@ -164,14 +163,14 @@ function App() {
           {state.report && <div><dt>Serving report revision</dt><dd className="mono">{state.report.revision}</dd></div>}
         </dl>
       </details>
-      <footer>TLC yellow taxi records · Simulated reporting faults and cutover decisions</footer>
+      <footer>Reporting faults are simulated.</footer>
     </main>
   </>;
 }
 
 function Metrics({ label, summary }: { label: string; summary?: Summary | null }) {
   return <div className="metrics">
-    <h3><span aria-hidden="true" />{label}</h3>
+    <h3>{label}</h3>
     <dl><div><dt>Trips</dt><dd>{count(summary?.trips)}</dd></div>
     <div><dt>Recorded CBD fees</dt><dd>{money(summary?.fee_cents)}</dd></div></dl>
   </div>;
@@ -183,7 +182,7 @@ function Controls({ state, busy, action }: { state: State; busy: string; action:
   const select = (change: object) => void action('selection', {
     target: state.target, scenario: state.scenario, batch: state.batch.name, ...change,
   });
-  return <section className="surface controls" aria-label="Rehearsal controls" aria-busy={!!busy}>
+  return <section className="controls" aria-label="Rehearsal controls" aria-busy={!!busy}>
     <div className="selectors">
       <label>Target<select value={state.target} disabled={!!busy || active} onChange={event => select({ target: event.target.value })}>
         {Object.entries(state.targets).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
@@ -197,10 +196,10 @@ function Controls({ state, busy, action }: { state: State; busy: string; action:
     </div>
     <div className="buttons">
       <button className={!state.approval && !active ? 'primary' : undefined}
-        disabled={!!busy || active} onClick={() => void action('check', {}, 'Running warehouse checks…')}>Run checks</button>
+        disabled={!!busy || active} onClick={() => void action('check', {}, 'Running checks…')}>Run checks</button>
       <button className="primary" disabled={!!busy || !state.approval}
-        onClick={() => void action('switch', { approval: state.approval }, 'Reading the approved candidate…')}>Switch to cloud <span aria-hidden="true">↗</span></button>
-      <button disabled={!!busy || state.phase !== 'switched'}
+        onClick={() => void action('switch', { approval: state.approval }, 'Reading the approved candidate…')}>Switch to cloud</button>
+      <button className={state.phase === 'switched' ? 'primary' : undefined} disabled={!!busy || state.phase !== 'switched'}
         onClick={() => void action('failure', { injection: failure }, 'Verifying fallback…')}>Simulate failure</button>
       <button className="quiet" disabled={!!busy} onClick={() => { setFailure('candidate'); void action('reset'); }}>Reset</button>
     </div>
@@ -227,7 +226,7 @@ function Evidence({ state, grain, setGrain, day, setDay }: {
     (b.old?.trips ?? 0) - (a.old?.trips ?? 0));
   const [expanded, setExpanded] = useState(false);
   const shown = expanded ? rows : rows.slice(0, grain === 'zone' ? 5 : rows.length);
-  return <section className="surface evidence" aria-labelledby="evidence-title">
+  return <section className="evidence" aria-labelledby="evidence-title">
     <div className="surface-head">
       <div><h2 id="evidence-title">Reconciliation</h2><p>Recorded CBD fees and pickup counts</p></div>
       <div className="tabs" aria-label="Report grain">
