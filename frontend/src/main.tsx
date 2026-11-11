@@ -181,15 +181,16 @@ function Controls({ state, busy, action }: { state: State; busy: string; action:
       <label>Target<select value={state.target} disabled={!!busy || active} onChange={event => select({ target: event.target.value })}>
         {Object.entries(state.targets).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
       </select></label>
-      <label>Scenario<select value={state.scenario} disabled={!!busy || active} onChange={event => select({ scenario: event.target.value })}>
-        {Object.entries(state.scenarios).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
-      </select></label>
       <label>Batch<select value={state.batch.name} disabled={!!busy || active} onChange={event => select({ batch: event.target.value })}>
         {Object.entries(batchNames).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
       </select></label>
+      <label>Scenario<select value={state.scenario} disabled={!!busy || active} onChange={event => select({ scenario: event.target.value })}>
+        {Object.entries(state.scenarios).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
+      </select></label>
     </div>
     <div className="buttons">
-      <button disabled={!!busy || active} onClick={() => void action('check', {}, 'Running warehouse checks…')}>Run checks</button>
+      <button className={!state.approval && !active ? 'primary' : undefined}
+        disabled={!!busy || active} onClick={() => void action('check', {}, 'Running warehouse checks…')}>Run checks</button>
       <button className="primary" disabled={!!busy || !state.approval}
         onClick={() => void action('switch', { approval: state.approval }, 'Reading the approved candidate…')}>Switch to cloud <span aria-hidden="true">↗</span></button>
       <button disabled={!!busy || state.phase !== 'switched'}

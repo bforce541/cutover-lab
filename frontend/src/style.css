@@ -41,7 +41,7 @@ h1 { font-size: clamp(36px, 4.2vw, 63px); font-weight: 670; letter-spacing: -.06
 .context dd { font: 500 12px var(--mono); margin-top: 5px; }
 .top-grid, .detail-grid { display: grid; grid-template-columns: minmax(0, 2.3fr) minmax(270px, 1fr); gap: 16px; align-items: start; }
 .top-grid { align-items: stretch; }
-.surface { background: var(--paper); border: 1px solid var(--line); border-radius: 9px; min-width: 0; }
+.surface { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; min-width: 0; box-shadow: 0 1px 2px #26291e08; }
 .surface-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; padding: 15px 19px; }
 .surface-head h2 { font-size: 18px; font-weight: 680; letter-spacing: -.022em; }
 .surface-head p { color: var(--muted); font-size: 12px; margin-top: 3px; }
@@ -144,8 +144,13 @@ footer { margin-top: 9px; border-top: 1px solid var(--line); padding-top: 10px; 
   .context dt { font-size: 10px; }
   .top-grid, .detail-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .metrics dd { font-size: clamp(17px, 5vw, 24px); }
-  .controls { margin-block: 10px; gap: 8px; }
-  .controls button, .controls select { min-height: 36px; }
+  .controls { margin-block: 10px; gap: 10px; }
+  .selectors, .buttons { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .selectors label:last-child { grid-column: 1 / -1; }
+  .controls button, .controls select { min-height: 42px; }
+  .selectors select { width: 100%; min-width: 0; }
+  .failure-controls { flex-wrap: wrap; }
+  .tabs button { min-height: 36px; }
   .surface-head { padding-inline: 12px; }
   .totals { margin-inline: 12px; }
   .slice { margin-inline: 12px; }
@@ -155,8 +160,6 @@ footer { margin-top: 9px; border-top: 1px solid var(--line); padding-top: 10px; 
 }
 @media (max-width: 395px) {
   .evidence .surface-head { flex-wrap: wrap; }
-  .selectors { column-gap: 5px; }
-  .selectors select { padding-inline: 4px; }
 }
 
 @media (max-width: 740px) {
