@@ -84,14 +84,19 @@ function App() {
       </div>
     </header>
     <main className="frame main">
-      <div className="intro">
-        <div><p className="eyebrow">NYC YELLOW TAXI / FINANCE REPORT</p><h1>Migration review</h1></div>
-        <dl className="context">
-          <div><dt>Selected target</dt><dd>{state.targets[state.target]}</dd></div>
-          <div><dt>Serving backend</dt><dd>{state.report?.backend ?? 'Unavailable'}</dd></div>
-          <div><dt>Batch through</dt><dd>{lastDay(state.batch.as_of)}</dd></div>
-        </dl>
-      </div>
+      <section className="intro" aria-labelledby="review-title">
+        <div className="hero-art" aria-hidden="true" />
+        <div className="intro-copy">
+          <p className="eyebrow">NYC Yellow Taxi <span aria-hidden="true">/</span> Finance report</p>
+          <h1 id="review-title">Migration review</h1>
+          <p className="intro-description">Compare the daily report and decide whether to switch to the new warehouse.</p>
+        </div>
+      </section>
+      <dl className="context">
+        <div><dt>Selected target</dt><dd>{state.targets[state.target]}</dd></div>
+        <div><dt>Serving backend</dt><dd>{state.report?.backend ?? 'Unavailable'}</dd></div>
+        <div><dt>Batch through</dt><dd>{lastDay(state.batch.as_of)}</dd></div>
+      </dl>
 
       <div className="top-grid">
         <section className="surface snapshot" aria-labelledby="snapshot-title">
@@ -107,17 +112,19 @@ function App() {
 
         <section className={'surface decision ' + state.phase} aria-labelledby="decision-title" aria-live="polite">
           <div className="eyebrow decision-label"><i aria-hidden="true" />Cutover decision</div>
-          <h2 id="decision-title">{phaseLabels[state.phase]}</h2>
-          <p>{state.detail}</p>
-          {state.recovery && <div className="recovery">
-            <span>{state.recovery.kind} failure{state.recovery.milliseconds != null ? ' · ' + state.recovery.milliseconds.toFixed(2) + ' ms recovery' : ''}</span>
-            <span>{state.recovery.reason}</span>
-          </div>}
-          {!state.recovery && comparison && <div className="check-list">
-            {grains.map(key => <span key={key} data-failed={comparison.checks[key].failed > 0}>
-              {comparison.checks[key].failed > 0 ? '×' : '✓'} {grainLabels[key]}
-            </span>)}
-          </div>}
+          <div className="decision-result" key={state.phase}>
+            <h2 id="decision-title">{phaseLabels[state.phase]}</h2>
+            <p>{state.detail}</p>
+            {state.recovery && <div className="recovery">
+              <span>{state.recovery.kind} failure{state.recovery.milliseconds != null ? ' · ' + state.recovery.milliseconds.toFixed(2) + ' ms recovery' : ''}</span>
+              <span>{state.recovery.reason}</span>
+            </div>}
+            {!state.recovery && comparison && <div className="check-list">
+              {grains.map(key => <span key={key} data-failed={comparison.checks[key].failed > 0}>
+                {comparison.checks[key].failed > 0 ? '×' : '✓'} {grainLabels[key]}
+              </span>)}
+            </div>}
+          </div>
         </section>
       </div>
 
@@ -127,7 +134,7 @@ function App() {
       <div className="detail-grid">
         <Evidence state={state} grain={grain} setGrain={setGrain} day={day} setDay={setDay} />
         <section className="surface activity" aria-labelledby="activity-title">
-          <div className="surface-head"><div><h2 id="activity-title">Activity</h2><p>Most recent actions</p></div></div>
+          <div className="surface-head"><h2 id="activity-title">Activity</h2></div>
           <ol className="events">
             {state.events.slice(-5).reverse().map((event, i) => <li key={event.time + event.label + i}>
               <span className="event-dot" aria-hidden="true" />
@@ -238,7 +245,7 @@ function Evidence({ state, grain, setGrain, day, setDay }: {
       <div className="table-wrap" tabIndex={0} role="region" aria-label="Scrollable reconciliation table">
         <table>
           <thead><tr><th scope="col">{grainLabels[grain]}</th><th scope="col">Old system</th><th scope="col">Candidate</th><th scope="col">Difference</th></tr></thead>
-          <tbody>{shown.map(row => <EvidenceRow key={`${row.grain}-${row.month}-${row.day}-${row.zone}`} row={row} />)}</tbody>
+          <tbody key={grain + day}>{shown.map(row => <EvidenceRow key={`${row.grain}-${row.month}-${row.day}-${row.zone}`} row={row} />)}</tbody>
         </table>
       </div>
       <div className="table-foot">
